@@ -20,7 +20,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-  // REMEMBER ME LIFECYCLE HOOK MATRIX
+  // Check if email was previously remembered on login
   useEffect(() => {
     const cachedMail = localStorage.getItem("edu_info_remember_email");
     if (cachedMail) {
@@ -72,7 +72,7 @@ function Login() {
   const handleForgotPasswordSubmit = async (e) => {
     e.preventDefault();
 
-    // Frontend Matrix Guard Check for Reset Form
+    // Validate reset form inputs
     if (
       newPassword.length < 8 ||
       !/[a-zA-Z]/.test(newPassword) ||
@@ -178,7 +178,7 @@ function Login() {
                 </div>
               </div>
 
-              {/* Controls Options Row Matrix */}
+              {/* Remember me & forgot password controls */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs sm:text-sm">
                 <label className="flex items-center gap-2 text-gray-600 cursor-pointer select-none">
                   <input

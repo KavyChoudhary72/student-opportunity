@@ -23,7 +23,7 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  // STRICT FRONTEND GUARD VALIDATION MATRICES
+  // Frontend form validation rules
   const validateForm = () => {
     const STRICT_EMAIL_REGEX =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -123,7 +123,7 @@ function Signup() {
               engineering stack.
             </p>
 
-            {/* FORM PIPELINE SCROLL MATRIX */}
+            {/* Registration form content */}
             <form onSubmit={handleSignup} className="mt-5 space-y-3.5">
               {/* Name Input */}
               <div>
