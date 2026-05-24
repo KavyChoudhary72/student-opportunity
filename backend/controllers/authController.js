@@ -2,33 +2,32 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-// ================= VALIDATION RECOGNITION PATTERNS =================
+// Regular expressions for input validation
 const STRICT_EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const ALPHABETIC_NAME_REGEX = /^[a-zA-Z\s]{3,50}$/;
 
+// User Registration Handler
 export const signup = async (req, res) => {
   try {
     const { name, email, password, secretQuestion, secretAnswer } = req.body;
 
-    // 1. Full Name Strict Character Limits Check
+    // Validate full name (minimum 3 letters, alphabetic characters only)
     if (!name || !ALPHABETIC_NAME_REGEX.test(name)) {
       return res.status(400).json({
         success: false,
-        message:
-          "Full name must be at least 3 characters and contain only alphabets.",
+        message: "Full name must be at least 3 characters and contain only alphabets.",
       });
     }
 
-    // 2. Comprehensive Email Infrastructure Logic Check
+    // Validate email format
     if (!email || !STRICT_EMAIL_REGEX.test(email)) {
       return res.status(400).json({
         success: false,
-        message:
-          "Please provide a valid structured corporate email address (e.g., user@domain.com).",
+        message: "Please provide a valid email address.",
       });
     }
 
-    // 3. Strict Alphanumeric Password Rule Check Matrix (Min 8 Chars, 1 Letter, 1 Number)
+    // Validate password length (minimum 8 characters)
     if (!password || password.length < 8) {
       return res.status(400).json({
         success: false,
@@ -36,27 +35,26 @@ export const signup = async (req, res) => {
       });
     }
 
+    // Ensure password is alphanumeric
     const hasLetter = /[a-zA-Z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
 
     if (!hasLetter || !hasNumber) {
       return res.status(400).json({
         success: false,
-        message:
-          "Security breach policy: Password must be alphanumeric, containing both letters and numbers.",
+        message: "Password must be alphanumeric, containing both letters and numbers.",
       });
     }
 
-    // 4. Secure Recovery Keys Parameter Verification
+    // Validate secret recovery question and answer
     if (!secretQuestion || !secretAnswer) {
       return res.status(400).json({
         success: false,
-        message:
-          "Security baseline error: Secret recovery question and answer are required for configuration.",
+        message: "Secret recovery question and answer are required.",
       });
     }
 
-    // Check existing user
+    // Check if user already exists
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     if (existingUser) {
       return res.status(400).json({
@@ -65,10 +63,10 @@ export const signup = async (req, res) => {
       });
     }
 
-    // Hash password safely using high entropy salts rounds
+    // Hash the password with bcrypt (salt factor 10)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user object context mapping properties securely
+    // Create user document in database
     const user = await User.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
@@ -95,6 +93,7 @@ export const signup = async (req, res) => {
   }
 };
 
+// User Login Handler
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -102,29 +101,29 @@ export const login = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: "Please enter your tracking credentials parameters safely.",
+        message: "Please enter your email and password.",
       });
     }
 
-    // Find user by normalized token string email
+    // Find the user by email
     const user = await User.findOne({ email: email.toLowerCase().trim() });
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "Invalid credentials architecture match logic mismatch.",
+        message: "Invalid credentials.",
       });
     }
 
-    // Compare encrypted hash strings password
+    // Verify hashed password using bcrypt
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({
         success: false,
-        message: "Invalid credentials architecture match logic mismatch.",
+        message: "Invalid credentials.",
       });
     }
 
-    // JWT Token creation pipeline
+    // Generate signed JWT token (expires in 7 days)
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
@@ -152,7 +151,7 @@ export const login = async (req, res) => {
   }
 };
 
-// ================= DYNAMIC FORGOT PASSWORD ACCESS OVERWRITE CONTROLLER =================
+// Forgot Password / Password Reset Handler
 export const forgotPassword = async (req, res) => {
   try {
     const { email, secretAnswer, newPassword } = req.body;
@@ -160,30 +159,28 @@ export const forgotPassword = async (req, res) => {
     if (!email || !secretAnswer || !newPassword) {
       return res.status(400).json({
         success: false,
-        message:
-          "All parameters are mandatory to compute security verification tracking indices.",
+        message: "All fields are required to reset password.",
       });
     }
 
+    // Find user by email
     const user = await User.findOne({ email: email.toLowerCase().trim() });
     if (!user) {
       return res.status(404).json({
         success: false,
-        message:
-          "Account not registered in platform directory cluster database.",
+        message: "Account not registered.",
       });
     }
 
-    // Clean check verification answers indices match matching
+    // Verify secret question response
     if (user.secretAnswer !== secretAnswer.toLowerCase().trim()) {
       return res.status(400).json({
         success: false,
-        message:
-          "Security question answer mismatch. Identity verification failed.",
+        message: "Security question answer mismatch. Identity verification failed.",
       });
     }
 
-    // New Password Matrix Rules Verification Loop
+    // Validate new password rules
     if (
       newPassword.length < 8 ||
       !/[a-zA-Z]/.test(newPassword) ||
@@ -191,19 +188,17 @@ export const forgotPassword = async (req, res) => {
     ) {
       return res.status(400).json({
         success: false,
-        message:
-          "New password must be alphanumeric and minimum 8 characters long.",
+        message: "New password must be alphanumeric and minimum 8 characters long.",
       });
     }
 
-    // Overwrite old hash payload with freshly generated token parameters salt tracking bounds
+    // Hash new password and save it
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
 
     res.status(200).json({
       success: true,
-      message:
-        "Password reset sequence triggered and synchronized successfully! 🔓",
+      message: "Password reset successfully! 🔓",
     });
   } catch (error) {
     res.status(500).json({
