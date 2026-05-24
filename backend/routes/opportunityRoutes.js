@@ -4,10 +4,10 @@ import Opportunity from "../models/Opportunity.js";
 
 const router = express.Router();
 
-// 1. FIXED LOGIC INITIALIZATION: Clean server environment allocation
+// Initialize Google Generative AI client using server-side environment key
 const aiStudioClient = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// ================= ROUTE 1: FETCH ALL ACTIVE OPPORTUNITIES =================
+// ROUTE 1: Fetch all active opportunities from database (sorted by creation date)
 router.get("/", async (req, res) => {
   try {
     const opportunities = await Opportunity.find().sort({ createdAt: -1 });
@@ -17,19 +17,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ================= ROUTE 2: AI-POWERED COGNITIVE MATCHMAKER (GEMINI 1.5 FLASH) =================
+// ROUTE 2: AI-Powered Opportunity Matchmaker (Uses Gemini to recommend best matching opportunities)
 router.post("/ai-recommendations", async (req, res) => {
   try {
     const { userSkills, userInterests } = req.body;
 
-    // Fetch live entries directly from your MongoDB Atlas database collection
+    // Retrieve all active opportunity listings
     const activeOpportunities = await Opportunity.find({});
 
     if (!activeOpportunities.length) {
       return res.status(200).json({ success: true, recommendations: [] });
     }
 
-    // System prompt layout instruction mappings
+    // Build the matching recommendation system prompt
     const systemPromptStructure = `
       You are an expert AI Career Matchmaker System designed for student dashboards.
       Your task is to analyze a student's profile and recommend the absolute best matching opportunities from the provided list.
@@ -55,7 +55,7 @@ router.post("/ai-recommendations", async (req, res) => {
       3. Do NOT provide markdown wrappers, no backticks, and no conversation blocks. Just the raw array text output.
     `;
 
-    // Connect to the model with native clean JSON streaming configuration
+    // Configure model properties and specify JSON response format
     const modelInstance = aiStudioClient.getGenerativeModel({
       model: "gemini-1.5-flash",
       generationConfig: {
@@ -68,10 +68,9 @@ router.post("/ai-recommendations", async (req, res) => {
     );
     const textOutputResponse = aiResultStream.response.text().trim();
 
-    // Parse response array strings securely without breakable complex regex codes
+    // Parse recommendations output safely
     let identifiedMatchingIds = [];
     try {
-      // BULLETPROOF PARSING LAYER: Clean inline string replacement on a single line
       const cleanJsonString = textOutputResponse
         .replace(/```json/g, "")
         .replace(/```/g, "")
@@ -79,13 +78,13 @@ router.post("/ai-recommendations", async (req, res) => {
       identifiedMatchingIds = JSON.parse(cleanJsonString);
     } catch (parseError) {
       console.error(
-        "AI data array formatting parse breakdown fallback triggered:",
+        "AI recommendations parse failure, falling back to empty recommendation set:",
         textOutputResponse,
       );
       return res.status(200).json({ success: true, recommendations: [] });
     }
 
-    // Direct collection tracking filtration based on structural unique object IDs
+    // Filter database documents based on matched IDs returned by Gemini
     const tailoredAIRecommendations = activeOpportunities.filter((item) =>
       identifiedMatchingIds.includes(item._id.toString()),
     );
@@ -95,17 +94,15 @@ router.post("/ai-recommendations", async (req, res) => {
       recommendations: tailoredAIRecommendations,
     });
   } catch (globalError) {
-    console.error("Gemini routing execution framework anomaly:", globalError);
-    return res
-      .status(500)
-      .json({
-        success: false,
-        message: "AI recommendation pipeline processing error.",
-      });
+    console.error("Gemini recommendation pipeline error:", globalError);
+    return res.status(500).json({
+      success: false,
+      message: "AI recommendation pipeline processing error.",
+    });
   }
 });
 
-// ================= ROUTE 3: DATA SEEDER WITH SCHEMA VALIDATION FIXES =================
+// ROUTE 3: Seeder route to populate database with sample data
 router.get("/seed", async (req, res) => {
   try {
     const defaultData = [
@@ -120,7 +117,7 @@ router.get("/seed", async (req, res) => {
           "Build user-facing modules using modern structural stacks. Work closely with cross-functional designer teams.",
         skills: ["React", "JavaScript", "Tailwind CSS"],
         applyLink:
-          "[https://www.google.com/about/careers/applications/jobs/results](https://www.google.com/about/careers/applications/jobs/results)",
+          "https://www.google.com/about/careers/applications/jobs/results",
       },
       {
         title: "AI/ML Global Scholarship Program",
@@ -133,11 +130,10 @@ router.get("/seed", async (req, res) => {
           "Full funding grant covering deep academic tracks across contemporary deep neural architectures.",
         skills: ["Python", "Machine Learning", "PyTorch"],
         applyLink:
-          "[https://careers.microsoft.com/us/en/studentprograms](https://careers.microsoft.com/us/en/studentprograms)",
+          "https://careers.microsoft.com/us/en/studentprograms",
       },
       {
         title: "Junior Backend Engineer",
-        Amazon: "Amazon",
         company: "Amazon",
         category: "Job",
         location: "Hyderabad",
@@ -147,7 +143,7 @@ router.get("/seed", async (req, res) => {
           "Maintain core distributed microservices architectures processing millions of multi-tenant event signals daily.",
         skills: ["Node.js", "MongoDB", "AWS"],
         applyLink:
-          "[https://www.amazon.jobs/en/teams/global-student-programs](https://www.amazon.jobs/en/teams/global-student-programs)",
+          "https://www.amazon.jobs/en/teams/global-student-programs",
       },
     ];
 
@@ -160,12 +156,10 @@ router.get("/seed", async (req, res) => {
       items,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Seeding operational error: " + error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Seeding operational error: " + error.message,
+    });
   }
 });
 
