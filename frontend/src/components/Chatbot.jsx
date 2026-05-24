@@ -14,7 +14,7 @@ function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Storage connection matrix logic
+  // Retrieve previous chat messages from session storage
   const [messages, setMessages] = useState(() => {
     const savedChat = sessionStorage.getItem("eduinfo_chat_session");
     return savedChat
@@ -28,7 +28,7 @@ function Chatbot() {
         ];
   });
 
-  // 1. DYNAMIC AUTO-SCROLL LOOP: Runs whenever messages update or chatbot typing state changes
+  // Auto-scroll to the bottom of the chat when new messages are added
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => {
@@ -36,11 +36,11 @@ function Chatbot() {
           behavior: "smooth",
           block: "end",
         });
-      }, 80); // 80ms latency buffer to let DOM render completely before sliding
+      }, 80); // Brief delay to let the DOM update
     }
   }, [messages, isTyping, isOpen]);
 
-  // 2. ENTRY TRIGGER LOOP: Forces scrollbar to jump to the bottom instantly the moment user opens the chatbot
+  // Instantly scroll to the bottom when the chatbot is opened
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => {
