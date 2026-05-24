@@ -5,6 +5,7 @@ dns.setServers(["1.1.1.1", "1.0.0.1"]);
 // Your existing mongoose or mongodb connection code follows below...
 import opportunityRoutes from "./routes/opportunityRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -23,6 +24,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use("/api/opportunities", opportunityRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.get("/", (req, res) => {
   res.json({

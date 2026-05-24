@@ -6,11 +6,8 @@ import {
   FaMinus,
   FaRegCommentDots,
 } from "react-icons/fa";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import API from "../api/axios";
 
-// Change line 6 back to clean environment pointer:
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey || "");
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -53,33 +50,19 @@ function Chatbot() {
   }, [isOpen]);
 
   const askGeminiWithContext = async (currentUserPrompt) => {
-    if (!genAI || apiKey === "AIzaSyYourActualKeyHere") {
-      return "Configuration Alert: Please make sure to replace the placeholder key with your live Google AI Studio API key in Chatbot.jsx.";
-    }
-
     try {
-      // UPGRADED STABLE MODEL TARGET TO FIX 404
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      const { data } = await API.post("/chat", {
+        message: currentUserPrompt,
+        history: messages,
+      });
 
-      // Clean, simple English rules set
-      const systemContext =
-        "System Prompt Instruction: Your name is EduInfo AI. You are a helpful student assistant created by Kavya Choudhary, a second-year Data Science student at SKIT Jaipur. Keep your answers short, clear, and write in simple English. Help students find details about college scholarships, tech internships, MERN stack full-stack positions, data science paths, and engineering careers.";
-
-      const previousHistory = messages
-        .slice(-6)
-        .map(
-          (msg) =>
-            `${msg.sender === "user" ? "Student" : "EduInfo AI"}: ${msg.text}`,
-        )
-        .join("\n");
-
-      const ultimateCleanPrompt = `${systemContext}\n\nChat History:\n${previousHistory}\nStudent: ${currentUserPrompt}\nEduInfo AI:`;
-
-      const result = await model.generateContent(ultimateCleanPrompt);
-      const response = await result.response;
-      return response.text();
+      if (data.success) {
+        return data.reply;
+      } else {
+        return data.message || "Failed to communicate with AI.";
+      }
     } catch (error) {
-      console.error("Gemini network layout tracking crash:", error);
+      console.error("Gemini proxy API tracking crash:", error);
       return "I faced a connection hiccup. Please try typing your message again or refresh the screen.";
     }
   };

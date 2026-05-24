@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://student-opportunity.onrender.com",
+  baseURL: "https://student-opportunity.onrender.com/api",
 });
 
 // Attach token automatically (future use)
