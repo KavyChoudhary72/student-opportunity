@@ -80,7 +80,7 @@
 
     /* COVER PAGE DESIGN */
     .cover-page {
-      min-height: 85vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -96,7 +96,6 @@
       overflow: hidden;
     }
 
-    /* Decorative cover curves */
     .cover-decor {
       position: absolute;
       top: 0;
@@ -147,14 +146,14 @@
       font-size: 1.15rem;
       color: var(--light-gray);
       max-width: 600px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .meta-box {
       border-top: 1px solid #f3f4f6;
       padding-top: 40px;
       display: grid;
-      grid-template-cols: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 40px;
       width: 100%;
       max-width: 600px;
@@ -227,7 +226,49 @@
       line-height: 1.7;
     }
 
-    /* COMPONENT DETAILS GRID */
+    /* LINKS BOX STYLING */
+    .links-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .link-card {
+      background-color: #fafaf9;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      text-decoration: none;
+      color: var(--dark-gray);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .link-title {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary-emerald);
+      margin-bottom: 8px;
+    }
+
+    .link-url {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--light-gray);
+      word-break: break-all;
+    }
+
+    /* GRID LAYOUTS */
     .tech-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -258,7 +299,157 @@
       color: var(--light-gray);
     }
 
-    /* FOLDER TREE DISPLAY */
+    /* CHALLENGES LAYOUT */
+    .challenge-group {
+      margin-bottom: 30px;
+    }
+
+    .challenge-group-title {
+      font-family: var(--font-primary);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary-emerald);
+      margin-bottom: 16px;
+      padding-left: 8px;
+      border-left: 4px solid var(--accent-gold);
+    }
+
+    .challenge-card {
+      background-color: #fafaf9;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 18px;
+    }
+
+    .challenge-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background-color: #fee2e2;
+      color: #dc2626;
+      padding: 3px 10px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .challenge-title {
+      font-family: var(--font-primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark-gray);
+      margin-bottom: 12px;
+    }
+
+    .problem-box {
+      background-color: #fffbeb;
+      border-left: 3.5px solid #f59e0b;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      border-radius: 4px 8px 8px 4px;
+    }
+
+    .problem-box strong {
+      color: #b45309;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .problem-text {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    .solution-box {
+      background-color: #f0fdf4;
+      border-left: 3.5px solid #10b981;
+      padding: 10px 14px;
+      border-radius: 4px 8px 8px 4px;
+    }
+
+    .solution-box strong {
+      color: #047857;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .solution-text {
+      font-size: 0.85rem;
+      color: #065f46;
+    }
+
+    /* VIDEO CONTAINER STYLING */
+    .video-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.05), rgba(244, 180, 0, 0.05));
+      border: 2px dashed rgba(6, 78, 59, 0.2);
+      border-radius: var(--border-radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .video-icon {
+      width: 60px;
+      height: 60px;
+      background-color: #ecfdf5;
+      color: var(--secondary-emerald);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(6, 78, 59, 0.1);
+    }
+
+    .video-title {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--dark-gray);
+      margin-bottom: 6px;
+    }
+
+    .video-desc {
+      font-size: 0.85rem;
+      color: var(--light-gray);
+      max-width: 400px;
+    }
+
+    /* IMPROVEMENTS GRID */
+    .improvements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .improvement-card {
+      background-color: #fafaf9;
+      border-radius: 12px;
+      padding: 16px;
+      border-left: 4px solid var(--secondary-emerald);
+      border-top: 1px solid #f3f4f6;
+      border-right: 1px solid #f3f4f6;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      display: flex;
+      align-items: center;
+    }
+
+    /* TREE AND TABLES */
     .folder-tree {
       background-color: #1f2937;
       color: #f3f4f6;
@@ -272,7 +463,6 @@
       border: 1px solid #374151;
     }
 
-    /* API TABLE DESIGN */
     .table-container {
       width: 100%;
       overflow-x: auto;
@@ -343,18 +533,7 @@
       color: var(--light-gray);
     }
 
-    /* UTILITY CLASSES */
-    .highlight-pill {
-      background-color: #fef3c7;
-      color: #d97706;
-      padding: 3px 10px;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: inline-block;
-    }
-
-    /* DYNAMIC INSTRUCTION BUTTON */
+    /* ACTION BUTTON */
     .print-button {
       background-color: var(--primary-emerald);
       color: var(--white);
@@ -407,7 +586,7 @@
         border: none;
         padding: 20px 0;
         margin-bottom: 0;
-        page-break-after: always; /* Ensure clean page divisions */
+        page-break-after: always;
       }
 
       .section-card:last-child {
@@ -466,7 +645,7 @@
       <div class="doc-tag">Technical Documentation Manual</div>
       <h1 class="logo-badge">Edu<span>Info</span></h1>
       <h2 class="cover-title">AI-Powered Student Opportunity Dashboard</h2>
-      <p class="cover-subtitle">A stateless authentication MERN web application with secure backend Gemini AI proxy routing and real-time MongoDB opportunities shelf analytics.</p>
+      <p class="cover-subtitle">A stateless MERN web application with secure backend Gemini AI proxy routing and real-time MongoDB opportunities shelf analytics.</p>
       
       <div class="meta-box">
         <div class="meta-item">
@@ -488,9 +667,34 @@
       </div>
     </div>
 
+    <!-- LIVE DEMO LINKS -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🔗</div>
+        <h3 class="section-title">Live Deployment Links</h3>
+      </div>
+      <p class="para">Both frontend and backend are deployed in production on Render. The application features zero client-side keys, making it ready for secure scaling.</p>
+      
+      <div class="links-box">
+        <a href="https://eduinfo-723y.onrender.com" target="_blank" class="link-card">
+          <div>
+            <div class="link-title">Frontend Live Application</div>
+            <p style="font-size: 0.8rem; color: var(--light-gray); margin-bottom: 8px;">Access the interactive student-dashboard, register, filter positions, and converse with the career assistant.</p>
+          </div>
+          <div class="link-url">https://eduinfo-723y.onrender.com</div>
+        </a>
+        <a href="https://student-opportunity.onrender.com" target="_blank" class="link-card">
+          <div>
+            <div class="link-title">Backend RESTful API Server</div>
+            <p style="font-size: 0.8rem; color: var(--light-gray); margin-bottom: 8px;">Node.js and Express server routing authentications, MongoDB Atlas collection queries, and secure Gemini chatbot proxies.</p>
+          </div>
+          <div class="link-url">https://student-opportunity.onrender.com</div>
+        </a>
+      </div>
+    </div>
+
     <!-- 2. TECH STACK SECTION -->
     <div class="section-card">
-      <div class="section-decor"></div>
       <div class="section-header">
         <div class="section-icon">⚙️</div>
         <h3 class="section-title">Mandatory Tech Stack & Architecture</h3>
@@ -525,7 +729,208 @@
       </div>
     </div>
 
-    <!-- 3. DETAILED FILE ARCHITECTURE -->
+    <!-- 3. CHALLENGES FACED & SOLUTIONS IMPLEMENTED -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🛠️</div>
+        <h3 class="section-title">Challenges Faced & Solutions Implemented</h3>
+      </div>
+      <p class="para">Transitioning the codebase from a simple local mockup to a highly modular, secure, production-grade MERN stack application presented several challenges, ranging from database indexing structures to secure environment deployments. Mapped below are all key issues resolved during integration.</p>
+
+      <!-- Category A: Development Challenges -->
+      <div class="challenge-group">
+        <div class="challenge-group-title">Development Challenges</div>
+        
+        <!-- Challenge 1 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 01</span>
+          <h4 class="challenge-title">Static Opportunities Data</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">Initially, the dashboard displayed hardcoded opportunities data directly inside Dashboard.jsx, making the application non-scalable and difficult to manage dynamically.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Replaced the hardcoded array with dynamic data fetched from MongoDB using React useState and useEffect hooks.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 02</span>
+          <h4 class="challenge-title">Missing Loading State</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The dashboard UI rendered before backend data was successfully fetched, leading to broken UI states, missing indexes, or empty content flashes on slower networks.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Implemented an overlay loading state (<span class="code-inline">const [loading, setLoading] = useState(true);</span>) that ensures the dashboard UI remains stable and clean until the backend API completes its response.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 03</span>
+          <h4 class="challenge-title">Hardcoded Apply Button Redirect</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The opportunity cards' Apply button redirected users to a fixed, generic GitHub repository URL instead of custom individual application portals.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Modified the frontend apply handler to dynamically resolve and redirect to <span class="code-inline">opportunityItem.applyLink</span> in a new tab.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 4 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 04</span>
+          <h4 class="challenge-title">Missing applyLink Field in MongoDB</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The frontend displayed an error "Apply link not available for this opportunity" because preexisting MongoDB Atlas documents lacked the required URL field.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Updated the MongoDB collection documents and refactored the backend database seeder to store explicit <span class="code-inline">applyLink: "https://..."</span> properties for each opportunity.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 5 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 05</span>
+          <h4 class="challenge-title">Mongoose Schema Update</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The backend Mongoose schema did not originally support storing and validating application URLs, causing writes to reject or silently ignore the parameter.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Updated the backend <span class="code-inline">Opportunity.js</span> schema model explicitly, marking <span class="code-inline">applyLink</span> as a required schema parameter.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category B: Deployment and Production Issues -->
+      <div class="challenge-group" style="margin-bottom: 0;">
+        <div class="challenge-group-title">Deployment & Production Issues</div>
+        
+        <!-- Challenge 6 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 06</span>
+          <h4 class="challenge-title">Exposed MongoDB Connection String</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The MongoDB connection string containing live username and password credentials was accidentally exposed because the backend <span class="code-inline">.env</span> file was committed to GitHub.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Immediately registered <span class="code-inline">.env</span> inside the backend's <span class="code-inline">.gitignore</span> file, revoked the exposed credentials on MongoDB Atlas, and generated a new secure API cluster user credential set.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 7 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 07</span>
+          <h4 class="challenge-title">Database Connection Failure (querySrv ENOTFOUND)</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The backend server failed to connect to MongoDB Atlas upon deployment to Render, returning querySrv resolution errors because the password contained special characters (like '@') which corrupted URI connection bounds.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Encoded the password special characters using standard URI encoding and updated the MongoDB URI configuration accordingly on the Render Dashboard.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 8 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 08</span>
+          <h4 class="challenge-title">Missing Database Name in MongoDB URL</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The MongoDB connection URI lacked an explicit database name at the end of the query string, which caused MongoDB to write records to a generic test database instead of the targeted application collection.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Updated the URI string template to explicitly route documents to the intended database cluster context: <span class="code-inline">mongodb+srv://username:password@cluster.mongodb.net/student_db</span>.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 9 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 09</span>
+          <h4 class="challenge-title">Incorrect .env Protection Method</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">Attempted to manually hide or lock the local backend <span class="code-inline">.env</span> file using Windows PowerShell system attributes rather than using Git control exclusion commands.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Used a proper repository-level <span class="code-inline">.gitignore</span> file to robustly prevent the Git tracking tree from indexing the file.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 10 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 10</span>
+          <h4 class="challenge-title">Frontend Asset Path Errors (404)</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">Images and vector illustrations failed to load after production deployment (returning 404), because Vite automatically renames, hashes, and compiles static assets during builds, breaking hardcoded file paths.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Updated the codebase to use modern Vite asset imports (<span class="code-inline">import scholarshipImg from "../assets/scholarship.png"</span>), enabling Vite's bundler to securely index and resolve URLs in production.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 11 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 11</span>
+          <h4 class="challenge-title">React Router Deployment Errors</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">Navigating directly to frontend routes like `/signup` or refreshing the dashboard showed blank pages, returning MIME type errors or 404s in production on Render.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Configured rewrite and redirect rules on Render's static site configuration to rewrite all client paths to <span class="code-inline">index.html</span>, allowing React Router to manage paths dynamically.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 12 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 12</span>
+          <h4 class="challenge-title">Missing Frontend Environment Variables</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">The Gemini AI chatbot failed to compile or respond in the live deployed website because the public variable <span class="code-inline">VITE_GEMINI_API_KEY</span> was missing from Render's environment settings.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Refactored the chatbot to query the backend securely via a POST request to <span class="code-inline">/api/chat</span>. This securely reads the key from Render's backend variables, eliminating client-side exposure.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 13 -->
+        <div class="challenge-card">
+          <span class="challenge-num">Issue 13</span>
+          <h4 class="challenge-title">Broken Authentication API Endpoints</h4>
+          <div class="problem-box">
+            <strong>Problem</strong>
+            <p class="problem-text">Login and Signup API calls returned 404 errors in production because frontend requests hit incomplete root routes like `/auth/login` instead of `/api/auth/login`.</p>
+          </div>
+          <div class="solution-box">
+            <strong>Solution</strong>
+            <p class="solution-text">Corrected the shared Axios configuration base URL in the frontend (<span class="code-inline">frontend/src/api/axios.js</span>) to explicitly use <span class="code-inline">https://student-opportunity.onrender.com/api</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DETAILED FILE ARCHITECTURE -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">📁</div>
@@ -536,35 +941,33 @@
       <pre class="folder-tree">
 student-opportunity
 ├─ backend
-│  ├─ .env (Server environment keys)
 │  ├─ config
-│  │  └─ db.js (MongoDB connection configuration)
+│  │  └─ db.js (MongoDB Mongoose connection engine)
 │  ├─ controllers
-│  │  └─ authController.js (Signup, Login & Password Reset controllers)
+│  │  └─ authController.js (Authentication route handlers)
 │  ├─ models
-│  │  ├─ Opportunity.js (Opportunity schema definition)
-│  │  └─ User.js (User profile schema with security recover points)
+│  │  ├─ Opportunity.js (Opportunities Database Schema)
+│  │  └─ User.js (User Profile Database Schema)
 │  ├─ routes
-│  │  ├─ authRoutes.js (Authentication gateways routing)
-│  │  ├─ opportunityRoutes.js (MongoDB listings & AI matchmakers)
-│  │  └─ chatRoutes.js (Secure Gemini AI proxy routing endpoint)
-│  └─ server.js (Express server root file)
+│  │  ├─ authRoutes.js (Authentication routing)
+│  │  ├─ opportunityRoutes.js (Opportunities search & AI recommendation routing)
+│  │  └─ chatRoutes.js (Secure chatbot Gemini proxy endpoint)
+│  └─ server.js (Express server bootstrap entrypoint)
 └─ frontend
-   ├─ vite.config.js (Vite compiler settings)
-   └─ src
-      ├─ api
-      │  └─ axios.js (Universal client API client configuration)
-      ├─ components
-      │  └─ Chatbot.jsx (AI Chat Widget floating component)
-      └─ pages
-         ├─ Home.jsx (Splash organic landing screen)
-         ├─ Signup.jsx (Account registration interface)
-         ├─ Login.jsx (Stateless auth screen & forgot-password overlay)
-         └─ Dashboard.jsx (Analytics metrics panel & filtering grid)
+   ├─ src
+   │  ├─ api
+   │  │  └─ axios.js (Shared Axios Client configuration)
+   │  ├─ components
+   │  │  └─ Chatbot.jsx (Vibrant Career AI Floating Widget)
+   │  └─ pages
+   │     ├─ Home.jsx (Splash organic landing page)
+   │     ├─ Signup.jsx (Account registration interface)
+   │     ├─ Login.jsx (Stateless auth login + recovery modal)
+   │     └─ Dashboard.jsx (Main opportunities matrix workstation)
       </pre>
     </div>
 
-    <!-- 4. LIVE BACKEND RESTFUL API ENDPOINTS -->
+    <!-- 5. LIVE BACKEND RESTFUL API ENDPOINTS -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🛣️</div>
@@ -618,7 +1021,7 @@ student-opportunity
       </div>
     </div>
 
-    <!-- 5. SETUP & DEPLOYMENT MANUAL -->
+    <!-- 6. SETUP & DEPLOYMENT MANUAL -->
     <div class="section-card">
       <div class="section-header">
         <div class="section-icon">🚀</div>
@@ -655,19 +1058,37 @@ student-opportunity
       </div>
     </div>
 
-    <!-- 6. FUTURE ARCHITECTURAL ADVANCEMENTS -->
+    <!-- 7. DEMO VIDEO WALKTHROUGH PLACEHOLDER -->
     <div class="section-card">
       <div class="section-header">
-        <div class="section-icon">🔮</div>
-        <h3 class="section-title">Future Scaling Proposals</h3>
+        <div class="section-icon">📹</div>
+        <h3 class="section-title">Demo Video Walkthrough</h3>
       </div>
-      <p class="para">These premium enhancements will transition this functional internship proof-of-concept into a scalable enterprise student networking ecosystem.</p>
+      <p class="para">A visual walkthrough of the platform demonstrating responsiveness, MERN stack integration, secure stateless authentication, database filtering indices, and Google Gemini chatbot AI completions.</p>
       
-      <div style="margin-left: 20px; font-size: 0.95rem; color: #374151; space-y: 8px;">
-        <p style="margin-bottom: 8px;">📍 <strong>Daily Opportunity Cron Scrapers</strong>: Implement cron tasks utilizing python/nodejs headless browser scrapers (Playwright/Puppeteer) to scan portals automatically and inject fresh jobs daily into MongoDB.</p>
-        <p style="margin-bottom: 8px;">📍 <strong>AI PDF Resume Parsing</strong>: Enable students to upload their PDF resume. The backend AI parses skills dynamically using OCR to recommend positions instantly with zero forms needed.</p>
-        <p style="margin-bottom: 8px;">📍 <strong>Email Alert Integrations</strong>: Implement automated subscription triggers (using nodemailer/SendGrid) to notify students via email immediately when a high-probability match is listed.</p>
-        <p style="margin-bottom: 8px;">📍 <strong>Corporate Opportunity Portals</strong>: Mappings to allow external HR companies or college administrative offices to login, register, and directly list jobs on the dashboard.</p>
+      <div class="video-placeholder">
+        <div class="video-icon">▶</div>
+        <div class="video-title">System Walkthrough Video Placeholder</div>
+        <div class="video-desc">You can easily edit documentation.html to embed your YouTube or Loom video iframe right inside this placeholder container for your final submission!</div>
+      </div>
+    </div>
+
+    <!-- 8. OVERALL IMPROVEMENTS ACHIEVED -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🏆</div>
+        <h3 class="section-title">Overall Improvements Achieved</h3>
+      </div>
+      <p class="para">By resolving these architectural and deployment friction points, we successfully transformed the application into a highly professional MERN asset ready for scalability evaluation.</p>
+      
+      <div class="improvements-grid">
+        <div class="improvement-card">Converted the project from a static frontend into a dynamic MERN stack application.</div>
+        <div class="improvement-card">Integrated MongoDB Atlas cloud clusters securely with Express backend APIs.</div>
+        <div class="improvement-card">Implemented secure dynamic student opportunity management and parsing.</div>
+        <div class="improvement-card">Added production-safe client router redirect handling.</div>
+        <div class="improvement-card">Improved deployment speed and configuration templates on Render.</div>
+        <div class="improvement-card">Learned backend debugging using Postman, browser API tools, and MongoDB Atlas.</div>
+        <div class="improvement-card">Improved project scalability, maintainability, and production readiness.</div>
       </div>
     </div>
 
