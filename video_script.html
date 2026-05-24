@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduInfo - Walkthrough Video Demo Script</title>
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS RESET & BRAND STYLING THEMES MATCHING EDUINFO BRANDING */
+    :root {
+      --bg-cream: #f6efe6;
+      --primary-emerald: #064e3b;
+      --secondary-emerald: #047857;
+      --accent-gold: #f4b400;
+      --accent-gold-hover: #e3a600;
+      --dark-gray: #111827;
+      --light-gray: #6b7280;
+      --white: #ffffff;
+      --shape-yellow: #efd48d;
+      --shape-green: #d8e4c5;
+      
+      --font-primary: 'Outfit', sans-serif;
+      --font-secondary: 'Plus Jakarta Sans', sans-serif;
+      
+      --shadow-premium: 0 16px 48px rgba(0, 0, 0, 0.05);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.02);
+      --border-radius-lg: 32px;
+      --border-radius-md: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-secondary);
+      background-color: var(--bg-cream);
+      color: var(--dark-gray);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    /* DECORATIVE BACKGROUND BLUR ORBS */
+    .bg-shape {
+      position: fixed;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .shape-top-left {
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background-color: var(--shape-yellow);
+    }
+
+    .shape-bottom-right {
+      bottom: -150px;
+      right: -100px;
+      width: 450px;
+      height: 450px;
+      background-color: var(--shape-green);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* COVER PAGE DESIGN */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--white);
+      border-radius: var(--border-radius-lg);
+      padding: 60px 40px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--secondary-emerald), var(--accent-gold));
+    }
+
+    .logo-badge {
+      font-family: var(--font-primary);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-badge span {
+      color: var(--accent-gold);
+    }
+
+    .doc-tag {
+      background-color: #fef3c7;
+      color: #b45309;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 30px;
+      border: 1px solid #fde68a;
+    }
+
+    .cover-title {
+      font-family: var(--font-primary);
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--dark-gray);
+      max-width: 800px;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .cover-subtitle {
+      font-size: 1.05rem;
+      color: var(--light-gray);
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .meta-box {
+      border-top: 1px solid #f3f4f6;
+      padding-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .meta-item {
+      text-align: left;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+
+    /* SECTION CARD LAYOUTS */
+    .section-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius-md);
+      padding: 45px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f6efe6;
+      padding-bottom: 16px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #ecfdf5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary-emerald);
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--dark-gray);
+      letter-spacing: -0.5px;
+    }
+
+    .para {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    /* SCRIPT SCENE LAYOUT */
+    .scene-box {
+      background-color: #fafaf9;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .scene-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #e5e7eb;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .scene-title-badge {
+      font-family: var(--font-primary);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary-emerald);
+    }
+
+    .scene-duration {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background-color: #ecfdf5;
+      color: var(--secondary-emerald);
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid #d1fae5;
+    }
+
+    .instruction-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .instruction-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .instruction-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      letter-spacing: 1.5px;
+      padding-top: 4px;
+    }
+
+    .action-box {
+      background-color: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      border-radius: 4px 8px 8px 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1e40af;
+    }
+
+    .dialogue-box {
+      background-color: var(--white);
+      border: 1px solid #e5e7eb;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.7;
+    }
+
+    /* ACTION BUTTON */
+    .print-button {
+      background-color: var(--primary-emerald);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(6, 78, 59, 0.2);
+      transition: background-color 0.2s;
+    }
+
+    .print-button:hover {
+      background-color: var(--secondary-emerald);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px 0;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.8rem;
+      color: var(--light-gray);
+    }
+
+    /* ================= PRINT SPECIFIC STYLE CONFIGURATION ================= */
+    @media print {
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      
+      .bg-shape, .print-button {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100%;
+      }
+
+      .cover-page {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        page-break-after: always;
+      }
+
+      .section-card {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 20px 0;
+        margin-bottom: 0;
+        page-break-after: always;
+      }
+
+      .section-card:last-child {
+        page-break-after: avoid;
+      }
+      
+      .scene-box {
+        background-color: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        page-break-inside: avoid;
+      }
+
+      .action-box {
+        background-color: #f3f4f6 !important;
+        border-left: 4px solid #4b5563 !important;
+        color: #111827 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative blur shapes -->
+  <div class="bg-shape shape-top-left"></div>
+  <div class="bg-shape shape-bottom-right"></div>
+
+  <div class="container">
+    
+    <!-- Print button -->
+    <div style="text-align: right;">
+      <button class="print-button" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        Save as PDF / Print Script
+      </button>
+    </div>
+
+    <!-- COVER SHEET -->
+    <div class="cover-page">
+      <div class="cover-decor"></div>
+      <div class="doc-tag">Walkthrough Video Script</div>
+      <h1 class="logo-badge">Edu<span>Info</span></h1>
+      <h2 class="cover-title">Demo Walkthrough Video Script</h2>
+      <p class="cover-subtitle">A professional step-by-step narrative and screen-action timeline for recording a highly polished 2-5 minute portfolio presentation video.</p>
+      
+      <div class="meta-box">
+        <div class="meta-item">
+          <div class="meta-label">Application</div>
+          <div class="meta-value">EduInfo Student Dashboard</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Presenter</div>
+          <div class="meta-value">Kavya Choudhary</div>
+        </div>
+        <div class="meta-item" style="margin-top: 15px;">
+          <div class="meta-label">Evaluation Target</div>
+          <div class="meta-value">Alphaloop IT Pvt Ltd Internship</div>
+        </div>
+        <div class="meta-item" style="margin-top: 15px;">
+          <div class="meta-label">Target Video Duration</div>
+          <div class="meta-value">~ 4 Minutes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN SCRIPT SCENARIO -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🎬</div>
+        <h3 class="section-title">Walkthrough Video Timeline & Script</h3>
+      </div>
+      <p class="para" style="margin-bottom: 30px;">Follow this timeline scenario carefully during your screen-recording session. It keeps your narration clear, focuses on demonstrating high-value MERN tech choices, and presents your debugging story professionally.</p>
+
+      <!-- SCENE 1 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 1: Introduction & Objective</h4>
+          <span class="scene-duration">0:00 - 0:40</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Show the browser landing on your live landing page <strong>(https://eduinfo-723y.onrender.com)</strong>. Move your cursor gently over the warm sand landing elements and click the hover-effect buttons to show responsive transitions.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Hello everyone! My name is Kavya Choudhary, and I am excited to walk you through my implementation of the <strong>AI-Powered Student Opportunity Dashboard</strong>, which I have developed and deployed for the Alphaloop MERN Stack Internship evaluation. The core objective of this project is to build a highly responsive, modern dashboard that enables students to easily discover scholarships, internships, and jobs, utilize advanced query filtering, receive smart AI matching recommendations, and converse with a dedicated career assistant. Let's dive in!"
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 2 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 2: Architecture & Tech Stack</h4>
+          <span class="scene-duration">0:40 - 1:10</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Open VS Code briefly. Point to the file structure showing the separate <strong>/backend</strong> and <strong>/frontend</strong> folders to show proper modular organization. Open the <strong>package.json</strong> file in the backend to show the installed dependencies.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "From an architectural standpoint, the project follows a decoupled MERN stack approach. On the frontend, we use React.js compiled under Vite for quick load speeds, styled with Tailwind CSS for curated, responsive branding. On the backend, we run an Express.js server hosted on Node.js, which maps schema models to our cloud-hosted MongoDB Atlas database cluster. We have also integrated the Google Generative AI SDK, using secure backend routes to handle completions so no sensitive API credentials are ever exposed on the client."
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 3 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 3: Auth Gateways (Signup/Login)</h4>
+          <span class="scene-duration">1:10 - 1:50</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Go back to the browser and click "Login" to open the login page. Show the forgot-password overlay modal, type in a mock email, and explain the secure credential validation checking process.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Next, let's explore our secure Authentication Module. The platform utilizes stateless JWT authentication. When registering, passwords are encrypted on the backend server using high-entropy hashing via <strong>bcryptjs</strong>. We also collect a secret recovery question and answer, allowing users to trigger a password reset securely if they ever lose access. Let's log in to the dashboard."
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 4 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 4: Dashboard, Live Query Filters, and AI Matching</h4>
+          <span class="scene-duration">1:50 - 2:50</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Log in to show the Dashboard. Point to the analytics cards at the top showing the 6 statistics. Play with the filters (type in a skill, select "Scholarship", select "Remote") and click the "Apply Now" button to show a successful redirect.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Here we are on the main dashboard, which renders all key metrics at a single glance: <strong>Total Positions</strong>, active **Scholarships**, live **Internships**, available **Jobs**, **Bookmarked** numbers, and **Recently Viewed** tracking slots. 
+            All listing cards are queried in real time from our live MongoDB Atlas database. Students can filter opportunities on the fly by category, location, remote work mode, and required skills.
+            Additionally, we have an <strong>AI matching recommendation panel</strong> at the top. The engine automatically scans the user's profile interests and skills from MongoDB and filters matching database entries in real time, making discovery seamless. Clicking any 'Apply' button immediately opens the specific portal in a new tab."
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 5 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 5: Secure AI Chatbot Float Widget</h4>
+          <span class="scene-duration">2:50 - 3:30</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Click the emerald Career AI floating widget at the bottom right. Type in a message: <em>"Tell me about engineering careers"</em>. Show the typing animation bubble and let the AI response render live.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Another core feature of this platform is our Career AI floating widget, **EduInfo AI**. Instead of directly invoking the Google AI SDK from the React client (which would expose our API key in production javascript bundles), the chatbot issues a POST request to our secure backend `/api/chat` route. The backend reads the private `GEMINI_API_KEY` from its Render environment settings, contacts the stable next-gen **Gemini 2.5 Flash** model, maintains system instructions to keep answers clear and student-focused, and returns the response securely."
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 6 -->
+      <div class="scene-box">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 6: Challenges Faced & Overcoming Them</h4>
+          <span class="scene-duration">3:30 - 4:10</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Show the project's root folder files and point back to the browser.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Transitioning this project from a local prototype to a production-grade MERN deployment on Render was an outstanding learning experience. I tackled and resolved multiple challenges:
+            First, I replaced static, hardcoded frontend arrays with dynamic queries to MongoDB Atlas, implementing a robust load state overlay.
+            Second, I corrected production routing. I configured rewrite rules on Render to prevent MIME errors on router refreshes, corrected incomplete API endpoints (mapping requests from root `/login` to `/api/auth/login`), and resolved database querySrv network errors on Render by properly URL-encoding password strings.
+            Lastly, I secured the chatbot, moving all API key interactions from the public frontend static bundles into our secure backend proxy route."
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 7 -->
+      <div class="scene-box" style="margin-bottom: 0;">
+        <div class="scene-meta">
+          <h4 class="scene-title-badge">Scene 7: Future Upgrades & Conclusion</h4>
+          <span class="scene-duration">4:10 - 4:40</span>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Screen Action</span>
+          <div class="action-box">
+            Move cursor to the logo, hover over your profile dropdown, and show a clean user logout.
+          </div>
+        </div>
+        
+        <div class="instruction-row">
+          <span class="instruction-label">Spoken Narration</span>
+          <div class="dialogue-box">
+            "Looking forward, I have planned several advanced scaling upgrades for the platform, including: automated headless web scrapers to fetch daily listings, OCR-based AI resume parsing to recommend matches with zero manual form input, and email notifications for instant alerts.
+            This project has allowed me to greatly sharpen my MERN stack skills, session security designs, and production deployment approaches. Thank you so much for your time, and I look forward to your valuable feedback!"
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      EduInfo AI Demo Video Script - Designed by Kavya Choudhary for Alphaloop IT Pvt Ltd internship evaluation.
+    </div>
+
+  </div>
+
+</body>
+</html>
