@@ -10,8 +10,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Change line 6 back to clean environment pointer:
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null; // Bracket ke andar sirf 'apiKey' variable pass hoga!
-
+const genAI = new GoogleGenerativeAI(apiKey || "");
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
