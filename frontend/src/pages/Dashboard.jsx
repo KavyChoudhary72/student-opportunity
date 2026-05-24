@@ -74,7 +74,9 @@ function Dashboard() {
   useEffect(() => {
     const fetchOpportunities = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/opportunities");
+        const response = await fetch(
+          "https://student-opportunity.onrender.com/api/opportunities",
+        );
         const data = await response.json();
 
         if (data.success) {
