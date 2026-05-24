@@ -13,6 +13,8 @@ import {
   FaFilter,
   FaMagic,
   FaGlobeAmericas,
+  FaHistory,
+  FaList,
 } from "react-icons/fa";
 import toast from "react-hot-toast";
 
@@ -484,8 +486,24 @@ function Dashboard() {
           </div>
         </header>
 
-        {/* ================= PIPELINE ANALYTICS SHELF (GRID OPTIMIZED FOR MOBILE 2X2) ================= */}
-        <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 relative z-10">
+        {/* ================= PIPELINE ANALYTICS SHELF (GRID OPTIMIZED FOR MOBILE 2X3 / LG 6X1) ================= */}
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 relative z-10">
+          {/* 1. Total Opportunities Card */}
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
+            <div className="p-2.5 sm:p-3.5 bg-indigo-50 rounded-xl sm:rounded-2xl text-indigo-600 text-xl sm:text-2xl flex-shrink-0">
+              <FaList />
+            </div>
+            <div className="truncate">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+                Total Positions
+              </p>
+              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+                {opportunities.length} Total
+              </h3>
+            </div>
+          </div>
+
+          {/* 2. Scholarships Card */}
           <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
             <div className="p-2.5 sm:p-3.5 bg-amber-50 rounded-xl sm:rounded-2xl text-amber-500 text-xl sm:text-2xl flex-shrink-0">
               <FaGraduationCap />
@@ -500,6 +518,7 @@ function Dashboard() {
             </div>
           </div>
 
+          {/* 3. Internships Card */}
           <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
             <div className="p-2.5 sm:p-3.5 bg-emerald-50 rounded-xl sm:rounded-2xl text-emerald-600 text-xl sm:text-2xl flex-shrink-0">
               <FaBriefcase />
@@ -514,20 +533,22 @@ function Dashboard() {
             </div>
           </div>
 
+          {/* 4. Jobs Card */}
           <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-blue-50 rounded-xl sm:rounded-2xl text-blue-500 text-xl sm:text-2xl flex-shrink-0">
+            <div className="p-2.5 sm:p-3.5 bg-purple-50 rounded-xl sm:rounded-2xl text-purple-600 text-xl sm:text-2xl flex-shrink-0">
               <FaLaptopCode />
             </div>
             <div className="truncate">
               <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
-                Recent Views
+                Jobs
               </p>
               <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
-                {recentlyViewed.length} Viewed
+                {countStats.jobs || 0} Available
               </h3>
             </div>
           </div>
 
+          {/* 5. Bookmarked Card */}
           <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
             <div className="p-2.5 sm:p-3.5 bg-rose-50 rounded-xl sm:rounded-2xl text-rose-500 text-xl sm:text-2xl flex-shrink-0">
               <FaBookmark />
@@ -538,6 +559,21 @@ function Dashboard() {
               </p>
               <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
                 {savedIds.length} Saved
+              </h3>
+            </div>
+          </div>
+
+          {/* 6. Recently Viewed Card */}
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
+            <div className="p-2.5 sm:p-3.5 bg-blue-50 rounded-xl sm:rounded-2xl text-blue-500 text-xl sm:text-2xl flex-shrink-0">
+              <FaHistory />
+            </div>
+            <div className="truncate">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+                Recent Views
+              </p>
+              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+                {recentlyViewed.length} Viewed
               </h3>
             </div>
           </div>
