@@ -556,36 +556,154 @@
       background-color: var(--secondary-emerald);
     }
 
+    /* ================= NEW INTERACTIVE VIDEO PLAYER & PRINT HYPERLINK STYLES ================= */
+    .video-container {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .web-video-wrapper {
+      width: 100%;
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background-color: #000;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .web-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .print-video-link {
+      display: none;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .print-video-card {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--primary-emerald), var(--dark-gray));
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .print-video-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(244, 180, 0, 0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .print-video-thumbnail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      z-index: 2;
+    }
+
+    .print-play-btn {
+      width: 76px;
+      height: 76px;
+      background-color: var(--white);
+      color: var(--primary-emerald);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .print-play-btn svg {
+      width: 30px;
+      height: 30px;
+      margin-left: 6px; /* offset triangle slightly to appear centered */
+    }
+
+    .print-video-info h4 {
+      font-family: var(--font-primary);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .print-video-info p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+    }
+
+    .file-path-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.12);
+      color: var(--accent-gold);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .system-player-btn:hover {
+      background-color: #b45309 !important;
+    }
+
     /* ================= PRINT SPECIFIC STYLE CONFIGURATION ================= */
     @media print {
+      /* Force browser to print all background colors, gradients, and images */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
       body {
-        background-color: #ffffff;
-        color: #000000;
-        padding: 0;
+        background-color: var(--bg-cream) !important;
+        color: var(--dark-gray) !important;
+        padding: 40px 20px !important;
+      }
+
+      .audio-tip-container {
+        display: none !important;
       }
       
-      .bg-shape, .print-button {
+      /* Hide the print trigger button when printing */
+      .print-button {
         display: none !important;
       }
 
+      /* Keep the container width and centering */
       .container {
-        max-width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
       }
 
+      /* Ensure correct page breaks for beautiful layout flow in PDF */
       .cover-page {
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        min-height: 100vh;
         page-break-after: always;
       }
 
       .section-card {
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        padding: 20px 0;
-        margin-bottom: 0;
         page-break-after: always;
       }
 
@@ -593,32 +711,45 @@
         page-break-after: avoid;
       }
 
-      th {
-        background-color: #f3f4f6 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      /* Retain styling for interactive link cards, tech items, etc. */
+      .link-card, .tech-item, .challenge-card {
+        background-color: #fafaf9 !important;
+        border: 1px solid #e5e7eb !important;
       }
 
-      .method-badge {
-        border: 1px solid #ccc;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      .method-post {
-        background-color: #eff6ff !important;
-        color: #2563eb !important;
-      }
-
-      .method-get {
-        background-color: #ecfdf5 !important;
-        color: #16a34a !important;
-      }
-      
+      /* Retain folder tree design */
       .folder-tree {
-        background-color: #f3f4f6 !important;
-        color: #111827 !important;
-        border: 1px solid #d1d5db !important;
+        background-color: #1f2937 !important;
+        color: #f3f4f6 !important;
+        border: 1px solid #374151 !important;
+      }
+
+      /* Retain table headers */
+      th {
+        background-color: #f9f8f6 !important;
+      }
+
+      /* Hide web video player and display premium PDF video card in print */
+      .web-video-wrapper {
+        display: none !important;
+      }
+
+      .print-video-link {
+        display: block !important;
+      }
+
+      .print-video-card {
+        background: linear-gradient(135deg, #064e3b, #111827) !important;
+      }
+
+      .print-play-btn {
+        background-color: #ffffff !important;
+        color: #064e3b !important;
+      }
+
+      .file-path-badge {
+        background-color: rgba(255, 255, 255, 0.12) !important;
+        color: #f4b400 !important;
       }
     }
   </style>
@@ -1066,10 +1197,45 @@ student-opportunity
       </div>
       <p class="para">A visual walkthrough of the platform demonstrating responsiveness, MERN stack integration, secure stateless authentication, database filtering indices, and Google Gemini chatbot AI completions.</p>
       
-      <div class="video-placeholder">
-        <div class="video-icon">▶</div>
-        <div class="video-title">System Walkthrough Video Placeholder</div>
-        <div class="video-desc">You can easily edit documentation.html to embed your YouTube or Loom video iframe right inside this placeholder container for your final submission!</div>
+      <div class="video-container">
+        <!-- Web Interactive HTML5 Video Player -->
+        <div class="web-video-wrapper">
+          <video class="web-video" controls preload="metadata">
+            <source src="https://eduinfo-723y.onrender.com/InShot_20260525_115749553.mp4" type="video/mp4">
+            <source src="InShot_20260525_115749553.mp4" type="video/mp4">
+            <source src="C:/Users/hp/Downloads/InShot_20260525_115749553.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- Audio Helper Tip Alert (Screen Only) -->
+        <div class="audio-tip-container" style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center; background-color: #fef3c7; border: 1px solid #fcd34d; border-radius: 12px; padding: 12px 18px; font-size: 0.85rem; color: #78350f;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.25rem;">🔊</span>
+            <p style="margin: 0; line-height: 1.4;"><strong>Audio Tip:</strong> If you don't hear voice/sound in your browser (due to browser codec restrictions), click the button to play the video with full audio directly.</p>
+          </div>
+          <a href="https://eduinfo-723y.onrender.com/InShot_20260525_115749553.mp4" target="_blank" class="system-player-btn" style="background-color: #d97706; color: var(--white); text-decoration: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-family: var(--font-primary); font-size: 0.8rem; white-space: nowrap; transition: background-color 0.2s;">
+            Open Walkthrough Video URL
+          </a>
+        </div>
+
+        <!-- PDF Clickable Video Link & Card (Visible only in PDF Print) -->
+        <a class="print-video-link" href="https://eduinfo-723y.onrender.com/InShot_20260525_115749553.mp4" target="_blank">
+          <div class="print-video-card">
+            <div class="print-video-thumbnail">
+              <div class="print-play-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <div class="print-video-info">
+                <h4>Interactive Walkthrough Video</h4>
+                <p>Click here to open and play the demo video walkthrough on any device</p>
+                <span class="file-path-badge">🔗 Play Deployed Walkthrough Video</span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -1135,5 +1301,22 @@ student-opportunity
 
   </div>
 
+  <!-- Script to ensure video volume is active and unmuted -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const video = document.querySelector('.web-video');
+      if (video) {
+        // Explicitly unmute and set full volume
+        video.muted = false;
+        video.volume = 1.0;
+        
+        // Failsafe: on play, guarantee unmuted volume
+        video.addEventListener('play', () => {
+          video.muted = false;
+          video.volume = 1.0;
+        });
+      }
+    });
+  </script>
 </body>
 </html>
