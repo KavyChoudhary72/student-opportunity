@@ -487,92 +487,92 @@ function Dashboard() {
         </header>
 
         {/* ================= PIPELINE ANALYTICS SHELF (GRID OPTIMIZED FOR MOBILE 2X3 / LG 6X1) ================= */}
-        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 relative z-10">
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 relative z-10">
           {/* 1. Total Opportunities Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-indigo-50 rounded-xl sm:rounded-2xl text-indigo-600 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-indigo-50 rounded-xl sm:rounded-2xl text-indigo-600 text-base sm:text-xl flex-shrink-0">
               <FaList />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Total Positions
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {opportunities.length} Total
               </h3>
             </div>
           </div>
 
           {/* 2. Scholarships Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-amber-50 rounded-xl sm:rounded-2xl text-amber-500 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-amber-50 rounded-xl sm:rounded-2xl text-amber-500 text-base sm:text-xl flex-shrink-0">
               <FaGraduationCap />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Scholarships
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {countStats.scholarships} Active
               </h3>
             </div>
           </div>
 
           {/* 3. Internships Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-emerald-50 rounded-xl sm:rounded-2xl text-emerald-600 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-emerald-50 rounded-xl sm:rounded-2xl text-emerald-600 text-base sm:text-xl flex-shrink-0">
               <FaBriefcase />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Internships
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {countStats.internships} Live
               </h3>
             </div>
           </div>
 
           {/* 4. Jobs Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-purple-50 rounded-xl sm:rounded-2xl text-purple-600 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-purple-50 rounded-xl sm:rounded-2xl text-purple-600 text-base sm:text-xl flex-shrink-0">
               <FaLaptopCode />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Jobs
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {countStats.jobs || 0} Available
               </h3>
             </div>
           </div>
 
           {/* 5. Bookmarked Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-rose-50 rounded-xl sm:rounded-2xl text-rose-500 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-rose-50 rounded-xl sm:rounded-2xl text-rose-500 text-base sm:text-xl flex-shrink-0">
               <FaBookmark />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Bookmarked
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {savedIds.length} Saved
               </h3>
             </div>
           </div>
 
           {/* 6. Recently Viewed Card */}
-          <div className="bg-white rounded-xl sm:rounded-[24px] p-4 sm:p-5 shadow-sm border border-gray-100 flex items-center gap-3 sm:gap-4">
-            <div className="p-2.5 sm:p-3.5 bg-blue-50 rounded-xl sm:rounded-2xl text-blue-500 text-xl sm:text-2xl flex-shrink-0">
+          <div className="bg-white rounded-xl sm:rounded-[24px] p-3 sm:p-4 md:p-5 shadow-sm border border-gray-100 flex items-center gap-2 sm:gap-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-blue-50 rounded-xl sm:rounded-2xl text-blue-500 text-base sm:text-xl flex-shrink-0">
               <FaHistory />
             </div>
-            <div className="truncate">
-              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider truncate">
+            <div className="flex-1 min-w-0">
+              <p className="text-[9px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider leading-tight">
                 Recent Views
               </p>
-              <h3 className="text-sm sm:text-xl md:text-2xl font-black mt-0.5 text-gray-900 truncate">
+              <h3 className="text-xs sm:text-lg md:text-xl font-black mt-0.5 text-gray-900 leading-tight">
                 {recentlyViewed.length} Viewed
               </h3>
             </div>
